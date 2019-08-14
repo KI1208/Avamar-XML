@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<avamarConfig version="3.0.7.1" localtime="2019/08/14-11:08:34JST" epoch="1565748514">
+  <gridConfig systemName="AVAMAR01.DEVOPS.LOCAL" systemID="1564027622@00:50:56:A8:E0:AD" customerNumber="Unlicensed" assetID="Unlicensed" licensedCapacity="Unlicensed" gsanVersion="19.1.0-38" mcsVersion="19.1.0-38" emsVersion="">
+    <authentication>
+      <avamar domain="/" username="sol3_admin" role="admin"/>
+      <ldapConf base="" bind_policy="soft" ldap_version="3" nss_initgroups_ignoreusers="root,ldap" nss_map_attribute="uniqueMember member" nss_schema="rfc2307bis" pam_filter="objectClass=posixAccount" pam_lookup_policy="yes" pam_password="exop" ssl="start_tls" uri=""/>
+    </authentication>
+    <emailHome from="admin@avamar01.devops.local" mailserver="mail">
+      <profile name="High Priority Events" domain="/" toEMC="true" subject="Avamar avamar01.devops.local 19.1.0-38 - High Priority Events"/>
+    </emailHome>
+    <maintenanceWindows backupStart="20:00" blackoutStart="N/A" maintenanceStart="08:00"/>
+    <replication enabled="false"/>
+    <snmp portNumber="162" readOnlyString="jravan" readWriteString="" trapHost="10.118.48.37"/>
+  </gridConfig>
+  <mcsConfig>
+    <mcClient domain="/10.118.45.226" name="10.118.45.226" os="N/A" version="Unknown"/>
+    <mcClient domain="/10.118.45.226/VirtualMachines" name="ikedak2_rhosp_compute_QEW4qZ0pNXqEKDMbYE5TOA" os="rhel7_64Guest" version="Unknown">
+      <plugin pid="vmimagel" description="Linux VMware Image" version="19.1.100-ALL"/>
+    </mcClient>
+    <mcClient domain="/Sol3" name="ikedak2" os="N/A" version="Unknown"/>
+    <mcClient domain="/clients" name="localhost" os="Linux">
+      <plugin pid="Linux Agent" description="Linux Client Agent" version="19.1.100-38"/>
+      <plugin pid="Unix" description="Linux File System" version="19.1.100-38"/>
+      <plugin pid="vmimagel" description="Linux VMware Image" version="19.1.100-38"/>
+      <plugin pid="vmwfilel" description="Linux VMware File-level Restore" version="19.1.100-38"/>
+      <plugin pid="vmimagew" description="Windows VMware Image" version="19.1.100-38"/>
+      <plugin pid="vmwfilew" description="Windows VMware File-level Restore" version="19.1.100-38"/>
+    </mcClient>
+    <mcGroup name="Default Group" domain="/" dataset="/Default Dataset" schedule="/Default Schedule" retention="/Default Retention" enabled="false">
+      <mcGroupMember client="/10.118.45.226/10.118.45.226" enabled="false"/>
+    </mcGroup>
+    <mcGroup name="Default Proxy Group" domain="/" dataset="/Default Dataset" schedule="/Default Schedule" retention="/Default Retention" enabled="false">
+      <mcGroupMember client="/clients/localhost" enabled="true"/>
+    </mcGroup>
+    <mcGroup name="Default Virtual Machine Group" domain="/10.118.45.226" dataset="/VMware Image Dataset" schedule="/Default Schedule" retention="/Default Retention" enabled="false">
+      <mcGroupMember client="/10.118.45.226/VirtualMachines/ikedak2_rhosp_compute_QEW4qZ0pNXqEKDMbYE5TOA" enabled="true"/>
+    </mcGroup>
+    <mcDataset name="Base Dataset" domain="/"/>
+    <mcDataset name="Default Dataset" domain="/"/>
+    <mcDataset name="OpenStack Image Dataset" domain="/"/>
+    <mcDataset name="Oracle Cumulative Backup Dataset" domain="/"/>
+    <mcDataset name="Oracle Differential Backup Dataset" domain="/"/>
+    <mcDataset name="Oracle Full Backup Dataset" domain="/"/>
+    <mcDataset name="Oracle Incremental Backup Dataset" domain="/"/>
+    <mcDataset name="SQL Server Differential Backup Dataset" domain="/"/>
+    <mcDataset name="SQL Server Full Backup Dataset" domain="/"/>
+    <mcDataset name="SQL Server Incremental Backup Dataset" domain="/"/>
+    <mcDataset name="Unix Dataset" domain="/"/>
+    <mcDataset name="VMware Image Dataset" domain="/"/>
+    <mcDataset name="Windows Dataset" domain="/"/>
+    <mcSchedule name="Daily Schedule" domain="/" duration="08:00" recurrence="weekly" start="06:00 UTC" timezone="America/Los_Angeles" type="Group"/>
+    <mcSchedule name="Default Replication Schedule" domain="/" duration="07:00" recurrence="weekly" start="07:00 UTC" timezone="America/Los_Angeles" type="Group"/>
+    <mcSchedule name="Default Schedule" domain="/" duration="10:00" recurrence="weekly" start="04:00 UTC" timezone="America/Los_Angeles" type="Group"/>
+    <mcSchedule name="Default Tiering Schedule" domain="/" duration="08:00" recurrence="weekly" start="08:00 UTC" timezone="America/Los_Angeles" type="Group"/>
+    <mcSchedule name="Evaluation Schedule" domain="/" duration="01:00" recurrence="weekly" start="14:00 UTC" timezone="America/Los_Angeles" type="Report"/>
+    <mcSchedule name="Notification Schedule" domain="/" duration="01:00" recurrence="daily" start="06:00 UTC" timezone="America/Los_Angeles" type="Report"/>
+    <mcSchedule name="Override Daily Schedule" domain="/" duration="01:00" recurrence="daily" start="06:00 UTC" timezone="America/Los_Angeles" type="Override"/>
+    <mcSchedule name="Statistics Schedule" domain="/" duration="01:00" recurrence="daily" start="06:00 UTC" timezone="America/Los_Angeles" type="Report"/>
+    <mcSchedule name="Usage Intelligence Schedule" domain="/" duration="01:00" recurrence="daily" start="06:00 UTC" timezone="America/Los_Angeles" type="Report"/>
+    <mcRetention name="Default Retention" domain="/" daily="60 days"/>
+    <mcRetention name="End User On Demand Retention" domain="/" duration="60 days"/>
+    <mcRetention name="Minimal Retention" domain="/" expirationDate="None"/>
+    <mcRetention name="Monthly Retention" domain="/" duration="1 month"/>
+    <mcRetention name="Weekly Retention" domain="/" duration="1 week"/>
+  </mcsConfig>
+  <nodeConfig nodeCount="1">
+    <node id="0.0" model="" osVersion="SuSE11SP4" partNumber="n/a" serialNumber="n/a" maker="vmware">
+      <network hostname="avamar01.devops.local" ipAddress="10.118.37.179" defaultRoute="10.118.37.1">
+        <interface name="eth0" ipaddr="10.118.37.179/24" macaddr="00:50:56:A8:E0:AD" ipv6addr="fe80::250:56ff:fea8:e0ad/64" mtu=""/>
+      </network>
+      <dns primary="10.118.37.174" secondary=""/>
+      <ipmi enabled="false"/>
+      <ntp enabled="false"/>
+      <etcHosts ipAddress="10.118.37.178" hostname="dd01.devops.local dd01"/>
+      <etcHosts ipAddress="10.118.37.179" hostname="avamar01.devops.local avamar01"/>
+    </node>
+  </nodeConfig>
+  <optConfig>
+    <downloaderService enabled="false"/>
+    <vcenter name="10.118.45.226"/>
+    <vmproxy domain="/clients" name="localhost" hostname="10.118.37.191" version="19.1.100-38"/>
+    <vmclient domain="/10.118.45.226/VirtualMachines" name="ikedak2_rhosp_compute" type="rhel7_64Guest"/>
+    <aer enabled="false"/>
+  </optConfig>
+  <counts mcClients="4" plugins="6" vcenters="1" vmclients="1" vmproxies="1">
+    <mcClients os="Linux" version="19.1.100-38" count="1"/>
+    <mcClients os="N/A" version="Unknown" count="2"/>
+    <mcClients os="rhel7_64Guest" version="Unknown" count="1"/>
+    <plugins os="Linux Client Agent" version="19.1.100" count="1"/>
+    <plugins os="Linux File System" version="19.1.100" count="1"/>
+    <plugins os="Linux VMware File-level Restore" version="19.1.100" count="1"/>
+    <plugins os="Linux VMware Image" version="19.1.100" count="1"/>
+    <plugins os="Windows VMware File-level Restore" version="19.1.100" count="1"/>
+    <plugins os="Windows VMware Image" version="19.1.100" count="1"/>
+    <vmclients os="rhel7_64Guest" count="1"/>
+    <vmproxies version="19.1.100-38" count="1"/>
+  </counts>
+</avamarConfig>
