@@ -18,7 +18,7 @@ ws.title = 'AvamarConfig'
 
 # # Style
 def form_cell(row, column, value):
-    ws.merge_cells(start_row=row, end_row=row, start_column=column, end_column=5)
+    ws.merge_cells(start_row=row, end_row=row, start_column=column, end_column=6)
     target_cell = ws.cell(row=row, column=column, value=value)
     font = styles.Font(color='FFFFFF', bold=True)
     fill = styles.PatternFill(fill_type='solid', fgColor='0076CE')
